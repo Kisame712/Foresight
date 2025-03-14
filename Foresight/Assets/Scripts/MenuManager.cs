@@ -21,4 +21,9 @@ public class MenuManager : MonoBehaviour
 #endif
 
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
