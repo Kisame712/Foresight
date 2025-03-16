@@ -18,16 +18,27 @@ public class Player : MonoBehaviour
     private bool canDash = true;
     BoxCollider2D playerFeetCollider;
 
+    [Header("Ability")]
+    public int ability;
+    AbilitySelector abilitySelector;
+    public bool isAbilitySelected;
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
+        abilitySelector = FindObjectOfType<AbilitySelector>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isAbilitySelected)
+        {
+            return;
+        }
         if (isDashing)
         {
             return;
@@ -43,11 +54,19 @@ public class Player : MonoBehaviour
 
     void Run()
     {
+        if (!isAbilitySelected)
+        {
+            return;
+        }
         playerRb.velocity = new Vector2(playerInput.x * playerSpeed, playerRb.velocity.y);
     }
 
     void OnJump(InputValue value)
     {
+        if (!isAbilitySelected)
+        {
+            return;
+        }
         if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
@@ -73,6 +92,10 @@ public class Player : MonoBehaviour
 
     void OnDash(InputValue value)
     {
+        if (!isAbilitySelected || ability!=0)
+        {
+            return;
+        }
         if (value.isPressed)
         {
             if (!isDashing)
