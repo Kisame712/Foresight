@@ -8,9 +8,7 @@ public class Player : MonoBehaviour
     [Header("Player Movement")]
     [SerializeField] float playerSpeed;
     [SerializeField] float jumpSpeed;
-    [SerializeField] float dashAmount;
-    [SerializeField] float dashDuration;
-    [SerializeField] float dashCoolDownTime;
+    
     [SerializeField] TrailRenderer dashTrail;
     Vector2 playerInput;
     Rigidbody2D playerRb;
@@ -23,6 +21,14 @@ public class Player : MonoBehaviour
     AbilitySelector abilitySelector;
     public bool isAbilitySelected;
 
+    [Header("Dash Ability")]
+    [SerializeField] float dashAmount;
+    [SerializeField] float dashDuration;
+    [SerializeField] float dashCoolDownTime;
+
+    [Header("Double Jump")]
+    int numberOfMaxJumps = 2;
+    int numberOfRemainingJumps;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +69,18 @@ public class Player : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        if (ability != 1)
+        {
+            SingleJump(value);
+        }
+        else
+        {
+            DoubleJump(value);
+        }
+    }
+
+    void SingleJump(InputValue value)
+    {
         if (!isAbilitySelected)
         {
             return;
@@ -73,7 +91,37 @@ public class Player : MonoBehaviour
         }
         if (value.isPressed)
         {
-            playerRb.velocity += new Vector2(0f, jumpSpeed);
+            playerRb.velocity = new Vector2(0f, jumpSpeed);
+        }
+
+    }
+
+    void DoubleJump(InputValue value)
+    {   
+        if (!isAbilitySelected)
+        {
+            return;
+        }
+        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            if(numberOfRemainingJumps == 0)
+            {
+                return;
+            }
+            else if(numberOfRemainingJumps > 0 && value.isPressed)
+            {
+                playerRb.velocity = new Vector2(0f, jumpSpeed);
+                numberOfRemainingJumps--;
+            }
+        }
+        else
+        {
+            numberOfRemainingJumps = numberOfMaxJumps;
+            if (value.isPressed)
+            {
+                playerRb.velocity = new Vector2(0f, jumpSpeed);
+                numberOfRemainingJumps--;
+            }
         }
 
     }
