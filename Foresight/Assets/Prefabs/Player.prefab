@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6481032043486644778}
   - component: {fileID: 2856397296542420572}
   - component: {fileID: 7184846661449319373}
+  - component: {fileID: 944114948415132673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eef9d7c13e97fc4429dfaba14e3efa93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -139,10 +140,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 8
   jumpSpeed: 15
+  dashTrail: {fileID: 2856397296542420572}
+  ability: 0
+  isAbilitySelected: 0
   dashAmount: 25
   dashDuration: 0.2
   dashCoolDownTime: 1
-  dashTrail: {fileID: 2856397296542420572}
 --- !u!114 &4337114061083234413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +352,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -358,3 +361,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.69137573, y: 0.19409633}
   m_EdgeRadius: 0
+--- !u!95 &944114948415132673
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654818605322505181}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 176801dfbe40d394b9b8584def70f1e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
