@@ -11,10 +11,12 @@ public class PlayerTutorial : MonoBehaviour
     Vector2 playerInput;
     Rigidbody2D playerRb;
     BoxCollider2D playerFeetCollider;
+    Animator playerAnim;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
     }
@@ -33,6 +35,14 @@ public class PlayerTutorial : MonoBehaviour
 
     void Run()
     {
+        if (playerInput.x != 0)
+        {
+            playerAnim.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnim.SetBool("isRunning", false);
+        }
         playerRb.velocity = new Vector2(playerInput.x * playerSpeed, playerRb.velocity.y);
     }
 
@@ -44,6 +54,7 @@ public class PlayerTutorial : MonoBehaviour
         }
         if (value.isPressed)
         {
+            playerAnim.SetTrigger("jump");
             playerRb.velocity = new Vector2(0f, jumpSpeed);
         }
     }

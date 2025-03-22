@@ -29,10 +29,15 @@ public class Player : MonoBehaviour
     int numberOfMaxJumps = 2;
     int numberOfRemainingJumps;
 
+    [Header("Animations and Effects")]
+    Animator playerAnim;
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
         abilitySelector = FindObjectOfType<AbilitySelector>();
     }
@@ -63,6 +68,14 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        if(playerInput.x != 0)
+        {
+            playerAnim.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnim.SetBool("isRunning", false);
+        }
         playerRb.velocity = new Vector2(playerInput.x * playerSpeed, playerRb.velocity.y);
     }
 
@@ -90,6 +103,7 @@ public class Player : MonoBehaviour
         }
         if (value.isPressed)
         {
+            playerAnim.SetTrigger("jump");
             playerRb.velocity = new Vector2(0f, jumpSpeed);
         }
 
@@ -109,6 +123,7 @@ public class Player : MonoBehaviour
             }
             else if(numberOfRemainingJumps > 0 && value.isPressed)
             {
+                playerAnim.SetTrigger("jump");
                 playerRb.velocity = new Vector2(0f, jumpSpeed);
                 numberOfRemainingJumps--;
             }
