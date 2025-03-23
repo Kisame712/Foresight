@@ -32,6 +32,11 @@ public class Player : MonoBehaviour
     [Header("Animations and Effects")]
     Animator playerAnim;
 
+    [Header("Player Audio")]
+    AudioSource playerAudioSource;
+    public AudioClip jumpSound;
+    public float jumpVolume;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +45,7 @@ public class Player : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
         abilitySelector = FindObjectOfType<AbilitySelector>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -104,6 +110,7 @@ public class Player : MonoBehaviour
         if (value.isPressed)
         {
             playerAnim.SetTrigger("jump");
+            playerAudioSource.PlayOneShot(jumpSound, jumpVolume);
             playerRb.velocity = new Vector2(0f, jumpSpeed);
         }
 
@@ -124,6 +131,7 @@ public class Player : MonoBehaviour
             else if(numberOfRemainingJumps > 0 && value.isPressed)
             {
                 playerAnim.SetTrigger("jump");
+                playerAudioSource.PlayOneShot(jumpSound, jumpVolume);
                 playerRb.velocity = new Vector2(0f, jumpSpeed);
                 numberOfRemainingJumps--;
             }
@@ -133,6 +141,8 @@ public class Player : MonoBehaviour
             numberOfRemainingJumps = numberOfMaxJumps;
             if (value.isPressed)
             {
+                playerAnim.SetTrigger("jump");
+                playerAudioSource.PlayOneShot(jumpSound, jumpVolume);
                 playerRb.velocity = new Vector2(0f, jumpSpeed);
                 numberOfRemainingJumps--;
             }
