@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
     int numberOfMaxJumps = 2;
     int numberOfRemainingJumps;
 
+    [Header("Attack")]
+    public float attackDistance;
+    public GameObject attackOrigin;
+
     [Header("Animations and Effects")]
     Animator playerAnim;
 
@@ -194,4 +198,29 @@ public class Player : MonoBehaviour
         canDash = true;
 
     }
+
+    void OnFire(InputValue value)
+    {
+        if (!isAbilitySelected || ability != 2)
+        {
+            return;
+        }
+        if (value.isPressed)
+        {
+            playerAnim.SetTrigger("attack");
+            Collider2D col = Physics2D.OverlapCircle(attackOrigin.transform.position, attackDistance, LayerMask.GetMask("Ground"));
+            BreakableWall wall = col.GetComponent<BreakableWall>();
+
+            if(wall == null)
+            {
+                return;
+            }
+            else
+            {
+                wall.BreakOnAttack();
+            }
+        }
+
+    }
+
 }
