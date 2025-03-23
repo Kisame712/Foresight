@@ -209,6 +209,10 @@ public class Player : MonoBehaviour
         {
             playerAnim.SetTrigger("attack");
             Collider2D col = Physics2D.OverlapCircle(attackOrigin.transform.position, attackDistance, LayerMask.GetMask("Ground"));
+            if(col == null)
+            {
+                return;
+            }
             BreakableWall wall = col.GetComponent<BreakableWall>();
 
             if(wall == null)
