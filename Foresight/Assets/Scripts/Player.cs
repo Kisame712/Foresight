@@ -183,6 +183,7 @@ public class Player : MonoBehaviour
         isDashing = true;
         float originalGravity = playerRb.gravityScale;
         playerRb.gravityScale = 0f;
+        playerAnim.SetTrigger("dash");
         playerRb.velocity = new Vector2(dashAmount * transform.localScale.x , 0f);
         dashTrail.emitting = true;
         yield return new WaitForSeconds(dashDuration);

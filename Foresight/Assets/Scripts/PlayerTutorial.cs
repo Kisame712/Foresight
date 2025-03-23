@@ -13,12 +13,17 @@ public class PlayerTutorial : MonoBehaviour
     BoxCollider2D playerFeetCollider;
     Animator playerAnim;
 
+    AudioSource playerAudioSource;
+    public AudioClip jumpSound;
+    public float jumpVolume;
+
     // Start is called before the first frame update
     void Start()
     {
         playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +59,7 @@ public class PlayerTutorial : MonoBehaviour
         }
         if (value.isPressed)
         {
+            playerAudioSource.PlayOneShot(jumpSound, jumpVolume);
             playerAnim.SetTrigger("jump");
             playerRb.velocity = new Vector2(0f, jumpSpeed);
         }
