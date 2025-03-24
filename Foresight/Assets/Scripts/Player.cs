@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
 
     [Header("Animations and Effects")]
     Animator playerAnim;
+    public GameObject nullifyEffect;
+    public GameObject lightParticle;
 
     [Header("Player Audio")]
     AudioSource playerAudioSource;
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         }
         Run();
         Flip();
+        Enlighten();
     }
 
     void OnMove(InputValue input)
@@ -225,6 +228,30 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    void Enlighten()
+    {
+        if(!isAbilitySelected || ability != 4)
+        {
+            return;
+        }
+        
+        Collider2D col = Physics2D.OverlapCircle(lightParticle.transform.position, 0.5f, LayerMask.GetMask("Cloud"));
+        if(col == null)
+        {
+            return;
+        }
+        DarkCloud cloud = col.GetComponent<DarkCloud>();
+        if(cloud == null)
+        {
+            return;
+        }
+        else
+        {
+            Debug.Log("Hitting Cloud");
+            cloud.RemoveClouds();
+        }
     }
 
 }
