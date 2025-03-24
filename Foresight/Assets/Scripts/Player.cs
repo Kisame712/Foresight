@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     AudioSource playerAudioSource;
     public AudioClip jumpSound;
     public float jumpVolume;
+    public AudioClip attackSound;
+    public float attackVolume;
 
 
     // Start is called before the first frame update
@@ -216,6 +218,7 @@ public class Player : MonoBehaviour
         if (value.isPressed)
         {
             playerAnim.SetTrigger("attack");
+            playerAudioSource.PlayOneShot(attackSound, attackVolume);
             Collider2D col = Physics2D.OverlapCircle(attackOrigin.transform.position, attackDistance, LayerMask.GetMask("Ground"));
             if(col == null)
             {
