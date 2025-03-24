@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
     BoxCollider2D playerFeetCollider;
+    private bool isFacingRight = true;
 
     [Header("Ability")]
     public int ability;
@@ -159,12 +160,16 @@ public class Player : MonoBehaviour
 
     void Flip()
     {
-        bool playerHasHorizontalVelocity = Mathf.Abs(playerRb.velocity.x) > Mathf.Epsilon;
-
-        if (playerHasHorizontalVelocity)
+ 
+        if(playerRb.velocity.x < 0 && isFacingRight == true)
         {
-
-            transform.localScale = new Vector2(Mathf.Sign(playerRb.velocity.x), 1f);
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            isFacingRight = false;
+        }
+        else if(playerRb.velocity.x > 0 && isFacingRight == false)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            isFacingRight = true;
         }
 
     }
@@ -249,7 +254,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hitting Cloud");
             cloud.RemoveClouds();
         }
     }
