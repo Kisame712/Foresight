@@ -436,6 +436,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &251415365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6028910204994271365, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_Name
+      value: Click Sound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436416306502927874, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+--- !u!114 &251415366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8747025845104391953, guid: a4dacd38ad7cd5e479ba389b34320c31, type: 3}
+  m_PrefabInstance: {fileID: 251415365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8420a93c07bcf564e806622a6305eab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &260047077
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +687,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1786112805}
         m_TargetAssemblyTypeName: DialogManager, Assembly-CSharp
         m_MethodName: NextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 251415366}
+        m_TargetAssemblyTypeName: ClickSound, Assembly-CSharp
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1134,7 +1214,7 @@ MonoBehaviour:
   - His master congratulates him and gives him a final lesson.
   - '"Your ambition is admirable and you have learnt so much."'
   - '"There are mysteries everywhere and curious minds are always looking for them."'
-  - '"When you finally find your purpose, be grateful for this beautiful journey!"'
+  - '"When you finally reach the end, be grateful for this beautiful journey!"'
   - '"Goodbye my friend..."'
   typingSpeed: 0.05
   continueButton: {fileID: 260047077}
@@ -1148,3 +1228,4 @@ SceneRoots:
   - {fileID: 843766945}
   - {fileID: 1786112804}
   - {fileID: 564029936}
+  - {fileID: 251415365}

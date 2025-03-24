@@ -187,6 +187,8 @@ MonoBehaviour:
   lightParticle: {fileID: 2889006680350003824}
   jumpSound: {fileID: 8300000, guid: 8a6995d24828d1a4baec147d85996b05, type: 3}
   jumpVolume: 0.8
+  attackSound: {fileID: 8300000, guid: 7036d5dbfd18a4342820fc82fd7123c4, type: 3}
+  attackVolume: 0.7
 --- !u!114 &4337114061083234413
 MonoBehaviour:
   m_ObjectHideFlags: 0
