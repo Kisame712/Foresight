@@ -15,5 +15,13 @@ public class AbilitySelector : MonoBehaviour
         player.isAbilitySelected = true;
     }
     
+    public void ActivateNullifyEffect()
+    {
+        player.nullifyEffect.SetActive(true);
+    }
 
+    public void ActivateLightParticle()
+    {
+        player.lightParticle.SetActive(true);
+    }
 }
